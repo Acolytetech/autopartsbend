@@ -11,12 +11,12 @@ const serviceRoutes = require('./routes/service');
 
 const app = express();
 app.use(cors());
+app.use(cors({ origin: 'https://autopartsft.vercel.app' }));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/services', serviceRoutes);
-
 mongoose.connect(process.env.MONGO_URI || "mongodb+srv://slawaniya03:V1MoHp7w0UxsbBYx@cluster0.cr4a3gw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log('MongoDB connected');
